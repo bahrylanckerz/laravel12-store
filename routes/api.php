@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Customer\LoginController;
 use App\Http\Controllers\Api\Customer\LogoutController;
+use App\Http\Controllers\Api\Customer\RatingController;
 use App\Http\Controllers\Api\Customer\MyOrderController;
 use App\Http\Controllers\Api\Customer\RegisterController;
 use App\Http\Controllers\Api\Customer\MyProfileController;
@@ -15,4 +16,5 @@ Route::prefix('customer')->group(function () {
     Route::get('my-orders/{snap_token}', [MyOrderController::class, 'show'])->name('customer.my-orders.show');
     Route::get('my-profile', [MyProfileController::class, 'index'])->name('customer.my-profile');
     Route::post('my-profile', [MyProfileController::class, 'update'])->name('customer.my-profile.update');
+    Route::post('ratings', [RatingController::class, '__invoke'])->name('customer.ratings');
 });
