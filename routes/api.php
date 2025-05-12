@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\Customer\LoginController;
 use App\Http\Controllers\Api\Customer\LogoutController;
 use App\Http\Controllers\Api\Customer\RatingController;
@@ -18,3 +19,5 @@ Route::prefix('customer')->group(function () {
     Route::post('my-profile', [MyProfileController::class, 'update'])->name('customer.my-profile.update');
     Route::post('ratings', [RatingController::class, '__invoke'])->name('customer.ratings');
 });
+
+Route::get('sliders', [SliderController::class, '__invoke'])->name('sliders');
