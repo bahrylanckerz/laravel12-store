@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SliderController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\Customer\LoginController;
 use App\Http\Controllers\Api\Customer\LogoutController;
@@ -24,3 +25,6 @@ Route::prefix('customer')->group(function () {
 Route::get('sliders', [SliderController::class, '__invoke'])->name('sliders');
 Route::get('categories', [CategoryController::class, 'index'])->name('categories');
 Route::get('categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('products', [ProductController::class, 'index'])->name('products');
+Route::get('products-popular', [ProductController::class, 'productpopular'])->name('products.popular');
+Route::get('products/{slug}', [ProductController::class, 'show'])->name('products.show');
