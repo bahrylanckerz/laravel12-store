@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
@@ -28,3 +29,9 @@ Route::get('categories/{slug}', [CategoryController::class, 'show'])->name('cate
 Route::get('products', [ProductController::class, 'index'])->name('products');
 Route::get('products-popular', [ProductController::class, 'productpopular'])->name('products.popular');
 Route::get('products/{slug}', [ProductController::class, 'show'])->name('products.show');
+Route::get('carts', [CartController::class, 'index'])->name('carts');
+Route::post('carts', [CartController::class, 'store'])->name('carts.store');
+Route::post('carts/increment', [CartController::class, 'increment'])->name('carts.increment');
+Route::post('carts/decrement', [CartController::class, 'decrement'])->name('carts.decrement');
+Route::delete('carts/destroy/{id}', [CartController::class, 'destroy'])->name('carts.destroy');
+Route::delete('carts/destroy-all', [CartController::class, 'destroyAll'])->name('carts.destroy-all');
