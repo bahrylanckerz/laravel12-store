@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\Customer\RatingController;
 use App\Http\Controllers\Api\Customer\MyOrderController;
 use App\Http\Controllers\Api\Customer\RegisterController;
 use App\Http\Controllers\Api\Customer\MyProfileController;
+use App\Http\Controllers\Api\RajaOngkirController;
 
 Route::prefix('customer')->group(function () {
     Route::post('register', [RegisterController::class, '__invoke'])->name('customer.register');
@@ -35,3 +36,8 @@ Route::post('carts/increment', [CartController::class, 'increment'])->name('cart
 Route::post('carts/decrement', [CartController::class, 'decrement'])->name('carts.decrement');
 Route::delete('carts/destroy/{id}', [CartController::class, 'destroy'])->name('carts.destroy');
 Route::delete('carts/destroy-all', [CartController::class, 'destroyAll'])->name('carts.destroy-all');
+
+Route::prefix('rajaongkir')->group(function () {
+    Route::get('search-destination', [RajaOngkirController::class, 'checkDestination'])->name('rajaongkir.search-destination');
+    Route::post('check-ongkir', [RajaOngkirController::class, 'checkOngkir'])->name('rajaongkir.check-ongkir');
+});
